@@ -99,7 +99,11 @@ d3.csv("data/sp500.csv", type, function(error, data) {
 
 function brushed() {
   if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
+  console.log('selection');
+  console.log(d3.event.selection);
+  console.log(x2.range());
   var s = d3.event.selection || x2.range();
+  debugger;
   x.domain(s.map(x2.invert, x2));
   focus.select(".area").attr("d", area);
   focus.select(".axis--x").call(xAxis);
